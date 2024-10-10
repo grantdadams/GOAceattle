@@ -125,6 +125,24 @@ halibut_alk_tall_males$PredSex <- 2
 halibut_alk_tall <- rbind(halibut_alk_tall, halibut_alk_tall_males)
 
 
+# -- Save
+dim(alk_pollock)
+colnames(alk_pollock) <- pollock_ages
+rownames(alk_pollock) <- pollock_lbin[-1]
+
+colnames(alk_cod) <- pcod_ages
+rownames(alk_cod) <- pcod_lbin[-1]
+
+colnames(alk_atf_females) <- atf_ages
+rownames(alk_atf_females) <- atf_lbin[-1]
+
+colnames(alk_atf_males) <- atf_ages
+rownames(alk_atf_males) <- atf_lbin[-1]
+
+write_xlsx(list(pollock = as.data.frame(alk_pollock), cod = as.data.frame(alk_cod), atf_fem = as.data.frame(alk_atf_females), atf_males = as.data.frame(alk_atf_males)),
+           path = "LengthToAgeGOA.xlsx")
+
+
 ################################################
 # Diet proportion estimation
 ################################################
