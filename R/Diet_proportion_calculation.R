@@ -3,6 +3,7 @@
 ################################################
 library(Rceattle)
 library(readxl)
+library(writexl)
 library(dplyr)
 library(tidyr)
 
@@ -652,6 +653,7 @@ for(pred in unique(alk_long_pred_annual$Pred_species)){ # Pred loop
 
 #### Reduce annual age specific prop to average by taking weighted average given relative density
 propPreyAgeAnnual <- merge(propPreyAgeAnnual, annual_density, all = TRUE)
+write.csv(propPreyAgeAnnual, file = paste0("Data/Diet data/Annual CEATTE_", Sys.Date() ,"_propPreyAge_1990-2018.csv"))
 propPreyAgeAnnualShort <- propPreyAgeAnnual[which(propPreyAgeAnnual$Yr >= 1993), ]
 propPreyAgeAnnualShort2 <- propPreyAgeAnnual[which(propPreyAgeAnnual$Yr >= 1996), ]
 
